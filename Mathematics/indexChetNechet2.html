@@ -1,0 +1,26 @@
+<html>
+<header>
+    <meta charset="UTF-8">
+    <title>Четное нечетное</title>
+</header>
+<body>
+<p><input type="text" placeholder="Введите число" id="num1" ></p>
+<p><input type="text" placeholder="Результат" id="rezult" ></p>
+<input type="button" id="btn" value="Определим чет/нечет" onclick="ff()">
+
+<script>
+function ff()
+    {
+        var aa = Math.abs(parseInt(num1.value));
+        while (aa > 1){
+            aa = aa - 2;
+        }
+        if (aa == 0){
+            rezult.value = "Число " + num1.value + " четное";
+        } else {
+            rezult.value = "Число " + num1.value + " нечетное";
+        }
+    }
+</script>
+</body>
+</html>

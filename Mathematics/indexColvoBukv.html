@@ -1,0 +1,67 @@
+<html>
+<header>
+    <meta charset="UTF-8">
+    <title>Количество букв</title>
+</header>
+<body>
+<p><input type="text" placeholder="Введите текст" id="num1" ></p>
+<p><input type="button" id="btn" value="Определим количество букв" onclick="calcChar()"></p>
+<input type="button" id="btn1" value="Очистить" onclick="relod()">
+
+<script>
+    function relod() {
+        location.reload();
+    }
+
+    var temp2 = new Array();    //Храним сами буквы
+    var temp3 = new Array();    //Подсчитываем каждую букву
+
+    function find (fin) {
+        for (var j = 0; j < num1.value.length; j++){
+            if (temp2[j] == fin){
+                temp3[j] = temp3[j] + 1;
+                break;
+            } else {
+                if (temp2[j] == null){
+                    temp2[j] = fin;
+                    temp3[j] = 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    function abc() {
+        if (num1.value.length == 0){
+            return alert("Нет текста для обработки");
+        }
+        for (var i = 0; i < num1.value.length; i++){
+            find (num1.value.charAt(i).toLowerCase());
+        }
+    }
+
+    var summa = 0;
+    function sum() {
+        for (var jj = 0; jj < temp3.length; jj++){
+            summa += temp3[jj];
+        }
+    }
+
+    function calcChar() {
+        abc();
+        sum();
+        var rez = "В вашем тексте: \"" + num1.value + "\" найдено " + summa + " букв(ы)/символов: \n";
+        for (var ii = 0; ii < temp2.length; ii++){
+            if (temp2[ii] == " "){
+                rez += "\'_\'" + " - " + temp3[ii] + " раз(а)\n";
+            } else {
+                rez += temp2[ii] + " - " + temp3[ii] + " раз(а)\n";
+            }
+        }
+        if (num1.value.length != 0){
+            alert(rez);
+        }
+    }
+</script>
+</body>
+</html>

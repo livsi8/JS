@@ -1,0 +1,26 @@
+<html>
+<header>
+    <meta charset="UTF-8">
+    <title>Поиск минимума</title>
+</header>
+<body>
+    <script>
+        var x1 = prompt("Введите 1-е целое число:", "");
+        var x2 = prompt("Введите 2-е целое число:", "");
+        var rez;
+        function ff (x1, x2) {
+            if (x1 == x2){
+                alert("Числа равны");
+            }
+            if (x1 < x2)
+            {
+                rez = x1;
+            } else {
+                rez = x2;
+            }
+        }
+        ff(x1, x2);
+        alert("Число " + rez + " меньшее");
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<html> <head>
+ </head> <body onload="start()">
+
+<style>
+    .p1{
+        margin: 100px;
+    }
+    p {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 24pt;
+        text-shadow: 0px 2px 5px #000;
+        /*color: green;*/
+    }
+    .transition-scale {
+        position: relative;
+        z-index: 2;
+        background: #EEE8AA;
+        color: green;
+        margin: 0 auto;
+        padding: 10px;
+        text-align: center;
+        max-width: 500px;
+        font-size: 20px;
+        border: 4px ridge black;
+        cursor: pointer;
+        transition: 3s linear;
+    }
+    .transition-scale:hover {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+    }
+
+</style>
+
+<script type="text/javascript">
+    var flag = "time_def";
+
+    function start()
+    {
+        var tm=new Date();
+        var h=tm.getHours();
+        var m=tm.getMinutes();
+        var s=tm.getSeconds();
+        var dd=tm.getDate();
+        var mm=tm.getMonth()+1;
+        var y=tm.getFullYear();
+
+        if (flag == "time_def") {
+            m=checkTime(m);
+            s=checkTime(s);
+            document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+        }
+        else if (flag == "time_sec") {
+            m=checkTime(m);
+            document.getElementById('txt').innerHTML=h+":"+m;
+        }
+        else if (flag == "time_data") {
+            document.getElementById('txt').innerHTML= dd+":"+mm+":"+y;
+        }
+        setTimeout('start()',50);
+    }
+    
+    function checkTime(i)
+    {
+        if (i<10)
+        {
+            i="0" + i;
+        }
+        return i;
+    }
+
+    function chenge(event) {
+        event = event || window.event;
+        if(event.type == "click") {
+            if (flag == "time_def") {
+                flag = "time_sec";
+            }
+            else if (flag == "time_sec") {
+                flag = "time_def";
+            }
+            else if (flag == "time_data") {
+                flag = "time_def";
+            }
+
+        }
+        else if(event.type == "contextmenu")
+        {
+            if(flag == "time_def")
+            {
+                flag = "time_data";
+            }
+            else if(flag == "time_data")
+            {
+                flag = "time_def";
+            } else if (flag == "time_sec") {
+                flag = "time_data";
+            }
+        }
+        return false;
+    }
+</script>
+<div class="p1"><p class="transition-scale" id="txt" oncontextmenu= "return chenge();" onclick="return chenge();"> </p></div>
+

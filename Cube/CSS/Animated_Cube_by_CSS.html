@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Animated Cube by CSS</title>
+   <meta charset="utf-8">
+</head>
+<body>
+    <script 
+	type="text/javascript"></script>
+    <div align="center" style="direction: ltr;">
+        <div style="text-align:center;padding:10px; color: #ceeb2c">
+            <h2>Animated Cube by CSS</h2>
+        </div>
+        <div class="wrap">
+            <div class="cube">
+                <div class="front">
+                    <h2>Front side</h2>
+                </div>
+                <div class="back">
+                    <h2>Back side</h2>    
+                </div>
+                <div class="top">
+                    <h2>Top side</h2>
+                </div>
+                <div class="bottom">
+                    <h2>Bottom side</h2>
+                </div>
+                <div class="left">
+                    <h2>Left side</h2>
+                </div>
+                <div class="right">
+                    <h2>Right side</h2>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            HTML {
+              height: 100%;
+            }
+
+            body {
+                background: linear-gradient(to top, gold, blue);
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                margin: 0px;
+            }
+            .wrap {
+                margin-top: 150px;
+                perspective: 1000px;
+                animation: bganim 3s linear 2s infinite;
+            }
+            .cube {
+                margin: auto;
+                position: relative;
+                height: 200px;
+                width: 200px;
+                transform-style: preserve-3d;
+            }
+            .cube div {
+                position: absolute;
+                padding: 10px;
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
+                opacity: 0.9;
+                background-color: rgba(180, 101, 22, 0.74);
+                border: solid 1px #eee;
+                color: #fff;
+                font: 30px arial;
+                transition: transform 0.2s ease-in;
+                }
+                                                                    /* Стенки куба */
+            .front {
+                transform: translateZ(100px);
+            }
+
+            .back {
+                transform: translateZ(-100px) rotateY(180deg);
+            }
+
+            .right {
+                transform: rotateY(-270deg) translateX(100px);
+                transform-origin: top right;
+            }
+
+            .left {
+                transform: rotateY(270deg) translateX(-100px);
+                transform-origin: center left;
+            }
+
+            .top {
+                transform: rotateX(-270deg) translateY(-100px);
+                transform-origin: top center;
+            }
+
+            .bottom {
+                transform: rotateX(270deg) translateY(100px);
+                transform-origin: bottom center;
+            }
+                                                                    /* Вращение */
+            @keyframes rotate {
+                from {
+                    transform: rotateX(0deg) rotateY(0deg);
+                }
+
+                to {
+                    transform: rotateX(360deg) rotateY(360deg);
+                }
+            }
+
+            .cube {
+                animation: rotate 20s infinite linear;
+            }
+                                                                    /* Взрываем куб */
+            .wrap:hover .front {
+                transform: translateZ(200px);
+            }
+            .wrap:hover .back {
+                transform: translateZ(-200px) rotateY(180deg);
+            }
+            .wrap:hover .right {
+                transform: rotateY(-270deg) translateZ(100px) translateX(100px);
+            }
+            .wrap:hover .left {
+                transform: rotateY(270deg) translateZ(100px) translateX(-100px);
+            }
+            .wrap:hover .top {
+                transform: rotateX(-270deg) translateZ(100px) translateY(-100px);
+            }
+            .wrap:hover .bottom {
+                transform: rotateX(270deg) translateZ(100px) translateY(100px);
+            }
+        </style>
+    </div>
+</body>
+</html>
